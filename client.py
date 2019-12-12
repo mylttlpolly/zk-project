@@ -4,8 +4,11 @@ import socket
 from Crypto.Hash import MD5
 from Crypto.PublicKey import RSA
 
+from utils import db
+
 
 def main(port=8080):
+    print(db['example'])
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         with open('mykey.pem', 'r') as f:
             key = RSA.importKey(f.read())

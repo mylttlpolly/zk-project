@@ -3,10 +3,11 @@ from random import randint
 
 from Crypto.PublicKey import RSA
 
-from utils import fill_config
+from utils import fill_config, db
 
 
 def main():
+    db['example'] = 'abc'
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         print('Socket created')
 
