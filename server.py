@@ -31,8 +31,7 @@ def main(port=8080):
                 conn[i], addr = sock.accept()
                 conn[i].send(bytes([nons[i]]))
                 data = (conn[i].recv(1024))
-                print(data)
-                print('Connected with ' + addr[0] + ':' + str(addr[1]))
+                print(f'Connected with {addr[0]}:{addr[1]}')
                 answer[i] = key.decrypt(data)
 
             response = b'equal' if answer[0] * nons[1] == answer[1] * nons[0] else b'not equal'
