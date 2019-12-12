@@ -1,11 +1,12 @@
-import configparser
 import socket
 from random import randint
 
 from Crypto.PublicKey import RSA
 
+from utils import fill_config
 
-def main(port=8080):
+
+def main():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         print('Socket created')
 
@@ -15,8 +16,9 @@ def main(port=8080):
         with open('mykey.pem', 'wb') as f:
             f.write(pub.exportKey('PEM'))
 
-        sock.bind(('localhost', port))
+        sock.bind(('localhost', 0))
         sock.listen()
+        fill_config(port=sock.getsockname()[1])
 
         nons = {k: randint(0, 9) for k in (0, 1)}
 
@@ -41,6 +43,4 @@ def main(port=8080):
 
 
 if __name__ == '__main__':
-    parser = configparser.ConfigParser()
-    parser.read('config.ini')
-    main(int(parser['DEFAULT']['port']))
+    main()
