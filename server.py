@@ -1,6 +1,6 @@
+import configparser
 import socket
 from random import randint
-import configparser
 
 from Crypto.PublicKey import RSA
 
