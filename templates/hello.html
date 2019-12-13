@@ -1,0 +1,43 @@
+<!doctype html>
+
+<title>Hello from Flask</title>
+<h1>Hello, World!</h1>
+
+<form>
+    User:<br>
+    <input id='user_tag' type='text' name='firstname' value='Nastya'>
+    <br>
+    Vote:<br>
+    <input id='vote_tag' type='text' name='lastname' value='1'>
+    <br><br>
+    <button id='btnSubmit' type='button'>Vote!</button>
+</form>
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+<script>
+    function button_handler() {
+        const payload = {
+            user: document.getElementById('user_tag').value,
+            vote: document.getElementById('vote_tag').value,
+        };
+        $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:5000/voting',
+            data: payload,
+            content_type: 'application/json;charset=UTF-8',
+            success: function (data, status, xhr) {
+                console.log(data);
+            },
+            error: function (data, status, error) {
+                console.log(status);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#btnSubmit').click(function () {
+            button_handler();
+        });
+    });
+</script>
