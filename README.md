@@ -1,7 +1,6 @@
 # ZK-SNARK
 
-This is the implementation of electronic voting using zk-SNARK 
-technology.
+### This is the implementation of electronic voting using zk-SNARK technology.
 
 To run the application, you should make several steps
 
