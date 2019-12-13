@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="btn-block">
-            <button id="btnSubmit" type="submit">Send</button>
+            <button id="btnSubmit" type="button">Send</button>
         </div>
     </form>
 </div>
@@ -43,27 +43,30 @@
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 
 <script>
-    function button_handler() {
-        const payload = {
-            user: document.getElementById('user_tag').value,
-            vote: $("input[name='candidate']:checked").val(),
-        };
-        $.ajax({
-            type: 'POST',
-            url: 'http://127.0.0.1:5000/voting',
-            data: payload,
-            content_type: 'application/json;charset=UTF-8',
-            success: function (data, status, xhr) {
-                console.log(data);
-                location.href = (data.valid) ? 'final' : 'error';
-            },
-            error: function (data, status, error) {
-                console.log(status);
-            }
-        });
-    }
-
     $(document).ready(function () {
+        function button_handler() {
+            const payload = {
+                user: document.getElementById('user_tag').value,
+                vote: $("input[name='candidate']:checked").val(),
+            };
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:5000/voting',
+                data: payload,
+                async: false,
+                content_type: 'application/json;charset=UTF-8',
+                success: function (data, status, xhr) {
+                    location.href = (data.valid) ? 'final' : 'error';
+                },
+                error: function (data, status, error) {
+                    alert('error!');
+                    console.log(status);
+                }
+            });
+
+            return false;
+        }
+
         $('#btnSubmit').click(function () {
             button_handler();
         });

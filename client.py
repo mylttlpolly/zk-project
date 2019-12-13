@@ -3,7 +3,7 @@ import socket
 from utils import get_port
 
 
-def main(name='Roma'):
+def main(name='noname'):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.connect((socket.gethostbyname('localhost'), get_port()))
         sock.sendall(str.encode(name))
