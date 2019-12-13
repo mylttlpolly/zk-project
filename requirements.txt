@@ -3,3 +3,4 @@ pycrypto
 sqlitedict
 gmpy
 primefac
+flask

@@ -1,22 +1,16 @@
-import configparser
 import socket
 
-from utils import db
+from utils import get_port
 
 
-def main(port=8080):
-    print(db['example'])
+def main(name='Roma'):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        sock.connect((socket.gethostbyname('localhost'), port))
-
-        sock.sendall(b'Polina;123')
+        sock.connect((socket.gethostbyname('localhost'), get_port()))
+        sock.sendall(str.encode(name))
         print('Message sent successfully')
-
         reply = sock.recv(4096)
-        print(reply.decode())
+        return reply.decode()
 
 
 if __name__ == '__main__':
-    parser = configparser.ConfigParser()
-    parser.read('config.ini')
-    main(int(parser['DEFAULT']['port']))
+    main()

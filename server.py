@@ -1,10 +1,9 @@
 import socket
 
-from utils import fill_config, db, validate
+from utils import fill_config, validate
 
 
 def main():
-    db['example'] = 'abc'
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         print('Socket created')
 
@@ -16,13 +15,12 @@ def main():
             conn, addr = sock.accept()
             print(f'Connected with {addr[0]}:{addr[1]}')
 
-            data = conn.recv(1024).decode()
-            user, vote = data.split(';')
-            print(f'received from {user}: {vote}')
+            user = conn.recv(1024).decode()
+            print(f'username: {user}')
 
             valid = validate(user)
             conn.send(b'ok' if valid else b'not ok')
-            print('END')
+            print('validation completed')
 
 
 if __name__ == '__main__':

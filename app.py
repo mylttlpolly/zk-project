@@ -1,7 +1,9 @@
-from flask import Flask, request, render_template
+from flask import Flask
+from flask import render_template
 from flask import request
 
-from utils import validate
+from client import main
+from utils import db
 
 app = Flask(__name__)
 
@@ -24,5 +26,8 @@ def error():
 @app.route('/voting', methods=['POST'])
 def func():
     data = request.form
-    valid = validate(data['user'])
+    valid = main(data['user']) == 'ok'
+    if valid:
+        db[data['vote']] = db.get(data['vote'], 0) + 1
+        print(db[data['vote']])
     return {'valid': valid}, 200

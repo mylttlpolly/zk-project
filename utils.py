@@ -14,3 +14,9 @@ def fill_config(port):
 
 def validate(s):
     return s in ('Nastya', 'Roma')
+
+
+def get_port():
+    parser = configparser.ConfigParser()
+    parser.read('config.ini')
+    return int(parser['DEFAULT']['port'])
