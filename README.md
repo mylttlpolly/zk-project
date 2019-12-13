@@ -1,7 +1,6 @@
 # e-Voting
 
 ### This is the implementation of electronic voting using zk-SNARK technology.
-![](https://miro.medium.com/max/750/0*E8aJfPPly_j8INYX)
 
 To run the application, you should make several steps
 
