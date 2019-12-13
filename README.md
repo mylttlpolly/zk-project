@@ -1,4 +1,4 @@
-#ZK-SNARK
+# ZK-SNARK
 
 This is the implementation of electronic voting using zk-SNARK 
 technology.
