@@ -10,3 +10,7 @@ def fill_config(port):
     config['DEFAULT']['port'] = str(port)
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
+
+
+def validate(s):
+    return s in ('Nastya', 'Roma')

@@ -1,3 +1,5 @@
 configparser
 pycrypto
 sqlitedict
+gmpy
+primefac
