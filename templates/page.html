@@ -11,7 +11,7 @@
 <div class="testbox">
     <form action="/">
         <div class="banner">
-            <h1></h1>
+            <h1>Vote</h1>
         </div>
         <div class="item">
             <label for="name">Name<span class="red">*</span></label>
@@ -55,6 +55,7 @@
             content_type: 'application/json;charset=UTF-8',
             success: function (data, status, xhr) {
                 console.log(data);
+                location.href = 'final';
             },
             error: function (data, status, error) {
                 console.log(status);

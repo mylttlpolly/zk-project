@@ -7,8 +7,13 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello():
+def voting():
     return render_template('page.html')
+
+
+@app.route('/final')
+def final():
+    return render_template('final.html')
 
 
 @app.route('/voting', methods=['POST'])
