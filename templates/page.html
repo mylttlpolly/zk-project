@@ -55,7 +55,10 @@
             content_type: 'application/json;charset=UTF-8',
             success: function (data, status, xhr) {
                 console.log(data);
-                location.href = 'final';
+                if (data.valid)
+                    location.href = 'final';
+                else
+                    location.href = 'error';
             },
             error: function (data, status, error) {
                 console.log(status);

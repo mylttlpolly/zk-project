@@ -6,19 +6,23 @@ from utils import validate
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def voting():
     return render_template('page.html')
 
 
-@app.route('/final')
+@app.route('/final', methods=['GET'])
 def final():
     return render_template('final.html')
+
+
+@app.route('/error', methods=['GET'])
+def error():
+    return render_template('error.html')
 
 
 @app.route('/voting', methods=['POST'])
 def func():
     data = request.form
     valid = validate(data['user'])
-    result = 'ok' if valid else 'not ok'
-    return {'result': result}, 200
+    return {'valid': valid}, 200
