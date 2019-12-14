@@ -1,5 +1,6 @@
 import socket
 
+from proof import verifier, voters_list
 from utils import fill_config, validate
 
 
@@ -18,7 +19,10 @@ def main():
             user = conn.recv(1024).decode()
             print(f'username: {user}')
 
-            valid = validate(user)
+            answers = [verifier(i) for i in range(len(voters_list))]
+            valid = 0 in answers
+            print(valid)
+
             conn.send(b'ok' if valid else b'not ok')
             print('validation completed')
 

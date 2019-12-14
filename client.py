@@ -1,6 +1,7 @@
 import socket
 
 from utils import get_port
+from proof import proof, verifier, voters_list
 
 
 def main(name='noname'):
@@ -8,8 +9,12 @@ def main(name='noname'):
         sock.connect((socket.gethostbyname('localhost'), get_port()))
         sock.sendall(str.encode(name))
         print('Message sent successfully')
+
+        proof(name)
         reply = sock.recv(4096)
-        return reply.decode()
+        import os
+        os.remove("Proof")
+        return reply.decode() == 'ok'
 
 
 if __name__ == '__main__':
