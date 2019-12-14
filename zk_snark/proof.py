@@ -66,15 +66,15 @@ def verifier(index):
     cell = scalar_mult(int(c), G)
     abcell = scalar_mult(int(sum_abc), G)
 
-    f = open('Proof', 'r')
-    aell1 = (int(f.readline()), int(f.readline()))
-    bell1 = (int(f.readline()), int(f.readline()))
-    cell1 = (int(f.readline()), int(f.readline()))
-    abcell1 = (int(f.readline()), int(f.readline()))
+    with open('Proof', 'r') as f:
+        aell1 = (int(f.readline()), int(f.readline()))
+        bell1 = (int(f.readline()), int(f.readline()))
+        cell1 = (int(f.readline()), int(f.readline()))
+        abcell1 = (int(f.readline()), int(f.readline()))
 
-    for elem1, elem2 in zip([aell, bell, cell, abcell], [aell1, bell1, cell1, abcell1]):
-        for i in range(2):
-            if elem1[i] != elem2[i]:
-                return -1
-    f.close()
+        for elem1, elem2 in zip([aell, bell, cell, abcell], [aell1, bell1, cell1, abcell1]):
+            for i in range(2):
+                if elem1[i] != elem2[i]:
+                    return -1
+        f.close()
     return 0
