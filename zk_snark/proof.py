@@ -48,7 +48,7 @@ def proof(name: str):
 def verifier(index):
     p, G = get_pg()
 
-    r, A, B, C = code_to_r1cs_with_inputs(fu, [voters_list[index]])
+    r, A, B, C = code_to_r1cs_with_inputs(func, [voters_list[index]])
     Ap, Bp, Cp, Z = r1cs_to_qap(A, B, C)
     Apoly, Bpoly, Cpoly, sol = create_solution_polynomials(r, Ap, Bp, Cp)
     k = 10
