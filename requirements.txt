@@ -5,3 +5,4 @@ sqlitedict
 gmpy
 primefac
 flask
+rsa
