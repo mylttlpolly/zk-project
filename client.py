@@ -1,3 +1,4 @@
+import os
 import socket
 
 from proof import proof
@@ -12,8 +13,7 @@ def main(name='noname'):
 
         proof(name)
         reply = sock.recv(4096)
-        import os
-        os.remove("Proof")
+        os.remove('Proof')
         return reply.decode() == 'ok'
 
 

@@ -13,7 +13,7 @@ $: pip install -r requirements.txt
 Step 1:
  Run the verification server
 ```
-$: python server.py
+$: ./run_verification_server.sh
 ``` 
 
 Step 2:
