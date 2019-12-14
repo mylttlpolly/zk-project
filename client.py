@@ -1,4 +1,3 @@
-import os
 import socket
 
 from zk_snark.proof import proof
@@ -13,7 +12,6 @@ def main(name='noname'):
 
         proof(name)
         reply = sock.recv(4096)
-        os.remove('Proof')
         return reply.decode() == 'ok'
 
 

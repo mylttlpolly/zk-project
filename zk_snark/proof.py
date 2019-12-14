@@ -8,7 +8,7 @@ def qeval(x):
     y = x**3
     return y + x + 5
 """
-voters_dict = {'Roma': 2, 'Kamila': 3, 'Polina': 4, 'Nastya': 5}
+voters_dict = {'Detinin': 2, 'Ragimova': 3, 'Starodumova': 4, 'Smeshko': 5}
 voters_list = [2, 3, 4, 5]
 
 
