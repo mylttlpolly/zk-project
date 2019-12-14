@@ -1,7 +1,7 @@
 import os
 import socket
 
-from proof import proof
+from zk_snark.proof import proof
 from utils import get_port
 
 

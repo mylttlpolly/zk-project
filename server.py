@@ -1,6 +1,6 @@
 import socket
 
-from proof import verifier, voters_list
+from zk_snark.proof import verifier, voters_list
 from utils import fill_config
 
 

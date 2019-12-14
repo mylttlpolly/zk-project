@@ -1,7 +1,7 @@
 import numpy as np
-from elliptic import get_pg, scalar_mult, point_add
-from to_r1cs import code_to_r1cs_with_inputs
-from qap import r1cs_to_qap, create_solution_polynomials
+from zk_snark.elliptic import get_pg, scalar_mult
+from zk_snark.to_r1cs import code_to_r1cs_with_inputs
+from zk_snark.qap import r1cs_to_qap, create_solution_polynomials
 
 fu = """
 def qeval(x):

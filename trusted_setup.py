@@ -1,8 +1,8 @@
 import numpy as np
 import rsa
 
-from qap import r1cs_to_qap
-from to_r1cs import code_to_r1cs_with_inputs
+from zk_snark.qap import r1cs_to_qap
+from zk_snark.to_r1cs import code_to_r1cs_with_inputs
 
 (pubkey, privkey) = rsa.newkeys(2048)
 
