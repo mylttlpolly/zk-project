@@ -237,16 +237,16 @@ def code_to_r1cs_with_inputs(code, input_vars):
     return r, A, B, C
 
 
-r, A, B, C = code_to_r1cs_with_inputs("""
-def qeval(x):
-    y = x**3
-    return y + x + 5
-""", [3])
-print('r')
-print(r)
-print('A')
-for x in A: print(x)
-print('B')
-for x in B: print(x)
-print('C')
-for x in C: print(x)
+# r, A, B, C = code_to_r1cs_with_inputs("""
+# def qeval(x):
+#     y = x**3
+#     return y + x + 5
+# """, [4,3])
+# print('r')
+# print(r)
+# print('A')
+# for x in A: print(x)
+# print('B')
+# for x in B: print(x)
+# print('C')
+# for x in C: print(x)

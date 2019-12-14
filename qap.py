@@ -107,38 +107,36 @@ def create_divisor_polynomial(sol, Z):
     return quot
 
 
-r = [1, 3, 35, 9, 27, 30]
-A = [[0, 1, 0, 0, 0, 0],
-     [0, 0, 0, 1, 0, 0],
-     [0, 1, 0, 0, 1, 0],
-     [5, 0, 0, 0, 0, 1]]
-B = [[0, 1, 0, 0, 0, 0],
-     [0, 1, 0, 0, 0, 0],
-     [1, 0, 0, 0, 0, 0],
-     [1, 0, 0, 0, 0, 0]]
-C = [[0, 0, 0, 1, 0, 0],
-     [0, 0, 0, 0, 1, 0],
-     [0, 0, 0, 0, 0, 1],
-     [0, 0, 1, 0, 0, 0]]
+# from to_r1cs import code_to_r1cs_with_inputs
+#
+# fu = """
+# def qeval(x):
+#     y = x**3
+#     return y + x + 5
+# """
 
-
-Ap, Bp, Cp, Z = r1cs_to_qap(A, B, C)
-print ('Ap')
-for x in Ap: print( x)
-print ('Bp')
-for x in Bp: print (x)
-print ('Cp')
-for x in Cp: print (x)
-print ('Z')
-print (Z)
-Apoly, Bpoly, Cpoly, sol = create_solution_polynomials(r, Ap, Bp, Cp)
-print ('Apoly')
-print (Apoly)
-print ('Bpoly')
-print( Bpoly)
-print ('Cpoly')
-print (Cpoly)
-print ('Sol')
-print (sol)
-print ('Z cofactor')
-print((create_divisor_polynomial(sol, Z)))
+# r, A, B, C = code_to_r1cs_with_inputs(fu, [3])
+#
+#
+#
+# Ap, Bp, Cp, Z = r1cs_to_qap(A, B, C)
+# print('Ap')
+# for x in Ap: print(x)
+# print('Bp')
+# for x in Bp: print(x)
+# print('Cp')
+# for x in Cp: print(x)
+# print('Z')
+# print(Z)
+# Apoly, Bpoly, Cpoly, sol = create_solution_polynomials(r, Ap, Bp, Cp)
+#
+# print('Apoly')
+# print(Apoly)
+# print('Bpoly')
+# print(Bpoly)
+# print('Cpoly')
+# print(Cpoly)
+# print('Sol')
+# print(sol)
+# print('Z cofactor')
+# print((create_divisor_polynomial(sol, Z)))
