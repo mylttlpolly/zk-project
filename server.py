@@ -1,7 +1,7 @@
 import socket
 
 from proof import verifier, voters_list
-from utils import fill_config, validate
+from utils import fill_config
 
 
 def main():

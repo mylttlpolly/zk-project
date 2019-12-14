@@ -1,7 +1,7 @@
 import socket
 
+from proof import proof
 from utils import get_port
-from proof import proof, verifier, voters_list
 
 
 def main(name='noname'):
