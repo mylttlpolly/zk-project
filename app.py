@@ -1,8 +1,8 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+from proof import proof, verifier, voters_list
 
-from client import main
 from utils import db
 
 app = Flask(__name__)
@@ -26,7 +26,9 @@ def error():
 @app.route('/voting', methods=['POST'])
 def func():
     data = request.form
-    valid = main(data['user']) == 'ok'
+    proof(data['user'])
+    answers = [verifier(i) for i in range(len(voters_list))]
+    valid = 0 in answers
     if valid:
         db[data['vote']] = db.get(data['vote'], 0) + 1
         print(db[data['vote']])

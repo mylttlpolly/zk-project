@@ -1,19 +1,10 @@
-# from .elliptic import make_keypair as get_point
-from elliptic import get_pg, scalar_mult
-from to_r1cs import code_to_r1cs_with_inputs
-from qap import r1cs_to_qap
-import random
-import rsa
 import numpy as np
-(pubkey, privkey) = rsa.newkeys(2048)
+import rsa
 
-#Choose s
-def create_keys_for_voters(voters_list):
-    voters_keys = []
-    for elem in voters_list:
-        crypto = rsa.encrypt(elem, pubkey)
-        voters_keys.append(crypto)
-    return voters_keys
+from qap import r1cs_to_qap
+from to_r1cs import code_to_r1cs_with_inputs
+
+(pubkey, privkey) = rsa.newkeys(2048)
 
 fu = """
 def qeval(x):
@@ -23,19 +14,14 @@ def qeval(x):
 
 
 def main():
-    p, G = get_pg()
-    # s = get_point()
-    p1 = 3000
     k = 10
-    alpa = random.randrange(1, p1)
-    b = random.randrange(1, p1)
 
     r, A, B, C = code_to_r1cs_with_inputs(fu, [3])
     Ap, Bp, Cp, Z = r1cs_to_qap(A, B, C)
 
     crs = open("CRS", 'w')
     crs.write(f'{len(Ap)}\n')
-    s = np.array([k**(len(Ap[0])-i-1) for i in range(len(Ap[0]))])
+    s = np.array([k ** (len(Ap[0]) - i - 1) for i in range(len(Ap[0]))])
     Apx = np.dot(np.array(Ap), s)
     Bpx = np.dot(np.array(Bp), s)
     Cpx = np.dot(np.array(Cp), s)
@@ -52,5 +38,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-

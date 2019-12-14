@@ -110,8 +110,7 @@ def point_add(point1, point2):
 
     x3 = m * m - x1 - x2
     y3 = y1 + m * (x3 - x1)
-    result = (x3 % curve.p,
-              -y3 % curve.p)
+    result = (x3 % curve.p, -y3 % curve.p)
 
     assert is_on_curve(result)
 
@@ -154,11 +153,8 @@ def make_keypair():
     private_key = random.randrange(1, curve.n)
     public_key = scalar_mult(private_key, curve.g)
 
-    return (private_key, public_key)
+    return private_key, public_key
+
 
 def get_pg():
     return curve.p, curve.g
-
-
-
-print('Curve:', curve.name)

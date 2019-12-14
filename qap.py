@@ -105,38 +105,3 @@ def create_divisor_polynomial(sol, Z):
     for x in rem:
         assert abs(x) < 10 ** -10
     return quot
-
-
-# from to_r1cs import code_to_r1cs_with_inputs
-#
-# fu = """
-# def qeval(x):
-#     y = x**3
-#     return y + x + 5
-# """
-
-# r, A, B, C = code_to_r1cs_with_inputs(fu, [3])
-#
-#
-#
-# Ap, Bp, Cp, Z = r1cs_to_qap(A, B, C)
-# print('Ap')
-# for x in Ap: print(x)
-# print('Bp')
-# for x in Bp: print(x)
-# print('Cp')
-# for x in Cp: print(x)
-# print('Z')
-# print(Z)
-# Apoly, Bpoly, Cpoly, sol = create_solution_polynomials(r, Ap, Bp, Cp)
-#
-# print('Apoly')
-# print(Apoly)
-# print('Bpoly')
-# print(Bpoly)
-# print('Cpoly')
-# print(Cpoly)
-# print('Sol')
-# print(sol)
-# print('Z cofactor')
-# print((create_divisor_polynomial(sol, Z)))

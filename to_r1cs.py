@@ -18,7 +18,6 @@ def parse(code):
 # variable assignments (variables are immutable;
 # can only be set once) and a return statement at the end
 def extract_inputs_and_body(code):
-    o = []
     if len(code) != 1 or not isinstance(code[0], ast.FunctionDef):
         raise Exception("Expecting function declaration")
     # Gather the list of input variables
@@ -223,30 +222,7 @@ def assign_variables(inputs, input_vars, flatcode):
 
 def code_to_r1cs_with_inputs(code, input_vars):
     inputs, body = extract_inputs_and_body(parse(code))
-    print('Inputs')
-    print(inputs)
-    print('Body')
-    print(body)
     flatcode = flatten_body(body)
-    print('Flatcode')
-    print(flatcode)
-    print('Input var assignment')
-    print(get_var_placement(inputs, flatcode))
     A, B, C = flatcode_to_r1cs(inputs, flatcode)
     r = assign_variables(inputs, input_vars, flatcode)
     return r, A, B, C
-
-
-# r, A, B, C = code_to_r1cs_with_inputs("""
-# def qeval(x):
-#     y = x**3
-#     return y + x + 5
-# """, [4,3])
-# print('r')
-# print(r)
-# print('A')
-# for x in A: print(x)
-# print('B')
-# for x in B: print(x)
-# print('C')
-# for x in C: print(x)
